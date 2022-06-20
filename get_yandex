@@ -1,0 +1,28 @@
+<?php
+$clid = 'clid';
+$apikey = 'API';
+$class_str = 'express';
+
+$fromlonlat = '43.230385838927816,76.93361121975246';
+$tolonlat = '43.24996393218453,76.95132452808683';
+
+$url = 'https://taxi-routeinfo.taxi.yandex.net/taxi_info';
+
+$options = array(
+    'clid' => 'https://taxi-routeinfo.taxi.yandex.net/taxi_info',
+    'apikey' => 'CVrUftwfwoEYOiCEFWwNHaVabjqPWhARDYmQzFb',
+    'rll' => '{43.230385838927816},{76.93361121975246}~{43.24996393218453},{76.95132452808683}',
+    'class_str' => 'express',
+)
+
+$ch = curl_init();
+$curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$curl_setopt($ch, CURLOPT_URL, $url.'?'.http_build_query($options));
+
+$responce = curl_exec($ch);
+curl_close($ch);
+
+echo '<pre>';
+print_r($responce);
+echo '</pre>';
+?>
